@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untukmu, Bintang Hatiku 💖</title>
+    <!-- Font & Ikon -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(145deg, #fbc2c2 0%, #f8afaf 40%, #ffe0f0 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Efek love berterbangan (animasi) */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .floating-hearts i {
+            position: absolute;
+            color: rgba(255, 120, 160, 0.4);
+            font-size: 24px;
+            animation: floatUp 8s linear infinite;
+            bottom: -10%;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Kartu utama romantis */
+        .love-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 50px 20px 50px 20px;
+            box-shadow: 0 35px 70px rgba(255, 105, 135, 0.4), 0 20px 40px rgba(255, 80, 120, 0.3), inset 0 2px 5px rgba(255,255,255,0.8);
+            max-width: 850px;
+            width: 100%;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            transition: 0.3s;
+        }
+
+        .love-card:hover {
+            box-shadow: 0 40px 80px rgba(255, 80, 120, 0.6);
+        }
+
+        /* Hiasan pita/bow */
+        .bow-decoration {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 40px;
+            color: #ff4d6d;
+            text-shadow: 2px 4px 10px rgba(255, 77, 109, 0.4);
+            background: rgba(255,255,240,0.7);
+            width: 80px;
+            height: 50px;
+            border-radius: 50% 50% 30% 30%;
+            line-height: 60px;
+            backdrop-filter: blur(4px);
+        }
+
+        /* Container foto dan avatar - tata letak baru yang lebih elegan */
+        .photo-section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            margin: 20px 0 25px;
+        }
+
+        /* Foto polaroid style */
+        .photo-frame {
+            flex: 0 0 auto;
+            width: 180px;
+            height: 200px;
+            background: white;
+            padding: 10px 10px 25px 10px;
+            border-radius: 20px 5px 20px 5px;
+            box-shadow: 0 20px 25px rgba(255, 80, 120, 0.4);
+            transform: rotate(-3deg);
+            transition: transform 0.3s ease;
+            border: 3px solid #fff5f5;
+            position: relative;
+        }
+
+        .photo-frame:hover {
+            transform: rotate(0deg) scale(1.05);
+            z-index: 20;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 15px 5px 15px 5px;
+            border: 2px solid #ffc0cb;
+            background: #ffe4ec;
+        }
+
+        .photo-caption {
+            font-size: 0.9rem;
+            margin-top: 8px;
+            color: #b3405a;
+            font-weight: 600;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .photo-caption i {
+            color: #ff4d6d;
+            font-size: 0.8rem;
+        }
+
+        /* Hati di samping foto */
+        .avatar-heart {
+            flex: 0 0 auto;
+            width: 130px;
+            height: 130px;
+            background: linear-gradient(145deg, #ff9a9e, #fad0c4);
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 30px #ffb6c1;
+            border: 4px solid white;
+            animation: morphHeart 6s ease-in-out infinite;
+        }
+
+        @keyframes morphHeart {
+            0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: scale(1); }
+            25% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: scale(1.03); }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; transform: scale(1.05); }
+            75% { border-radius: 70% 30% 50% 50% / 30% 60% 40% 70%; transform: scale(1.02); }
+        }
+
+        .avatar-heart i {
+            font-size: 70px;
+            color: white;
+            filter: drop-shadow(0 5px 8px #ff4d6d);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #b3405a;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 10px #ffe6f0;
+            letter-spacing: 1px;
+        }
+
+        .sub-name {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #ff4d6d;
+            background: rgba(255, 255, 255, 0.5);
+            display: inline-block;
+            padding: 0 30px;
+            border-radius: 100px;
+            backdrop-filter: blur(5px);
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px #fba0a0;
+        }
+
+        .love-message {
+            font-size: 1.3rem;
+            color: #5e2e3e;
+            background: rgba(255, 250, 240, 0.5);
+            border-radius: 30px;
+            padding: 20px 20px;
+            margin: 15px 0 20px;
+            line-height: 1.8;
+            backdrop-filter: blur(5px);
+            border: 2px dashed #ffb3b3;
+            box-shadow: inset 0 0 20px #ffe4ec;
+        }
+
+        .love-message i {
+            color: #ff3b5c;
+            margin: 0 6px;
+        }
+
+        .reasons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 18px;
+            margin: 25px 0 20px;
+        }
+
+        .reason-item {
+            background: white;
+            padding: 18px 18px;
+            border-radius: 40px 15px 40px 15px;
+            flex: 1 1 150px;
+            box-shadow: 0 15px 25px #ffbfbf;
+            border: 2px solid white;
+            transition: 0.3s;
+            font-weight: 600;
+            color: #9e3d55;
+            font-size: 1.1rem;
+            backdrop-filter: blur(2px);
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .reason-item:hover {
+            transform: translateY(-12px) rotate(1deg);
+            background: #ffd9e2;
+            color: #a1314b;
+            box-shadow: 0 30px 35px #ff99aa;
+        }
+
+        .reason-item i {
+            display: block;
+            font-size: 38px;
+            margin-bottom: 12px;
+            color: #ff4d6d;
+        }
+
+        .countdown-title {
+            font-size: 1.8rem;
+            margin: 30px 0 15px;
+            color: #972b41;
+            font-weight: 700;
+        }
+
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .timer-box {
+            background: rgba(255, 228, 235, 0.9);
+            padding: 15px 10px;
+            width: 100px;
+            border-radius: 30px 10px 30px 10px;
+            box-shadow: 0 10px 10px #fbaaba;
+            border: 2px solid #ffeef2;
+        }
+
+        .timer-box span {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #c1435f;
+            display: block;
+            line-height: 1;
+        }
+
+        .timer-box p {
+            font-size: 1rem;
+            color: #ad3f58;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .special-note {
+            margin: 35px 0 20px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: rgba(255, 240, 245, 0.8);
+            padding: 20px;
+            border-radius: 80px 20px 80px 20px;
+            color: #ba2d4b;
+            border: 3px solid white;
+        }
+
+        .special-note i {
+            color: red;
+            animation: beat 1s infinite;
+        }
+
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            40% { transform: scale(1.1); }
+        }
+
+        .signature {
+            font-family: 'Quicksand', cursive;
+            font-size: 2.2rem;
+            color: #ff4d6d;
+            margin-top: 10px;
+            text-shadow: 0 0 8px white;
+        }
+
+        .btn-play {
+            background: #ffb3c6;
+            border: none;
+            border-radius: 60px;
+            padding: 15px 35px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #7e3648;
+            margin: 15px 0 5px;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 8px 0 #b35f74, 0 10px 20px #ffa5b9;
+            border: 2px solid white;
+        }
+
+        .btn-play:hover {
+            background: #ffa5b9;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 0 #b35f74, 0 15px 25px #f28b9f;
+        }
+
+        .btn-play:active {
+            transform: translateY(5px);
+            box-shadow: 0 5px 0 #b35f74;
+        }
+
+        .footer-romance {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #a0485d;
+            font-weight: 600;
+        }
+
+        .footer-romance i {
+            color: #ff1a4c;
+        }
+
+        /* audio hidden */
+        #romantic-audio {
+            display: none;
+        }
+
+        /* Responsif untuk layar kecil */
+        @media (max-width: 600px) {
+            .photo-section {
+                gap: 15px;
+            }
+            .photo-frame {
+                width: 150px;
+                height: 180px;
+            }
+            .photo-frame img {
+                height: 115px;
+            }
+            .avatar-heart {
+                width: 100px;
+                height: 100px;
+            }
+            .avatar-heart i {
+                font-size: 55px;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .sub-name {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Latar belakang hati berterbangan -->
+    <div class="floating-hearts" id="heart-bg">
+        <i class="fas fa-heart" style="left: 5%; animation-duration: 7s; animation-delay: 0s;"></i>
+        <i class="fas fa-heart" style="left: 15%; animation-duration: 9s; animation-delay: 2s;"></i>
+        <i class="fas fa-heart" style="left: 25%; animation-duration: 11s; animation-delay: 1s;"></i>
+        <i class="fas fa-heart" style="left: 35%; font-size: 32px; animation-duration: 10s; animation-delay: 3s;"></i>
+        <i class="fas fa-heart" style="left: 45%; animation-duration: 8s; animation-delay: 0.5s;"></i>
+        <i class="fas fa-heart" style="left: 55%; font-size: 40px; animation-duration: 12s; animation-delay: 2.5s;"></i>
+        <i class="fas fa-heart" style="left: 65%; animation-duration: 9s; animation-delay: 1.2s;"></i>
+        <i class="fas fa-heart" style="left: 75%; animation-duration: 7.5s; animation-delay: 3.8s;"></i>
+        <i class="fas fa-heart" style="left: 85%; font-size: 28px; animation-duration: 10.5s; animation-delay: 0.2s;"></i>
+        <i class="fas fa-heart" style="left: 95%; animation-duration: 8.5s; animation-delay: 2.2s;"></i>
+    </div>
+
+    <!-- Kartu utama -->
+    <div class="love-card">
+        <div class="bow-decoration">
+            <i class="fas fa-ribbon"></i>
+        </div>
+
+        <!-- Bagian Foto + Avatar (tata letak baru yang harmonis) -->
+        <div class="photo-section">
+            <!-- Bingkai foto polaroid -->
+            <div class="photo-frame">
+                <!-- Ganti src dengan foto kalian. Gunakan gambar placeholder dulu -->
+                <img src="https://placekitten.com/200/150" alt="Foto Manis Kita" id="ourPhoto">
+                <div class="photo-caption">
+                    <i class="fas fa-camera-retro"></i>  Momen indah  <i class="fas fa-camera-retro"></i>
+                </div>
+            </div>
+
+            <!-- Hati beranimasi (avatar) -->
+            <div class="avatar-heart">
+                <i class="fas fa-heartbeat"></i>
+            </div>
+        </div>
+
+        <!-- Nama panggilan / untuk siapa -->
+        <h1>✨ Untuk ✨</h1>
+        <div class="sub-name">
+            <span id="pacarName">Cantikku</span> 
+            <i class="fas fa-star" style="color: gold; font-size: 1.8rem;"></i>
+        </div>
+
+        <!-- Pesan cinta utama -->
+        <div class="love-message">
+            <i class="fas fa-quote-left"></i> 
+            Setiap detik bersamamu adalah melodi terindah. Kamu adalah rumah, alasan aku tersenyum, dan mimpi terindah yang jadi nyata. 
+            <i class="fas fa-quote-right"></i>
+        </div>
+
+        <!-- Alasan kenapa cinta (3 hal simple) -->
+        <div class="reasons">
+            <div class="reason-item">
+                <i class="fas fa-gem"></i>
+                Berharga
+            </div>
+            <div class="reason-item">
+                <i class="fas fa-sun"></i>
+                Cahaya hidupku
+            </div>
+            <div class="reason-item">
+                <i class="fas fa-infinity"></i>
+                Selamanya
+            </div>
+        </div>
+
+            <!-- Countdown romantis (74 hari) -->
+        <div class="countdown-title">
+            <i class="fas fa-hourglass-half"></i> 74 Hari penuh cinta
+        </div>
+        <div class="timer" id="timer">
+            <div class="timer-box">
+                <span id="days">00</span>
+                <p>Hari</p>
+            </div>
+            <div class="timer-box">
+                <span id="hours">00</span>
+                <p>Jam</p>
+            </div>
+            <div class="timer-box">
+                <span id="minutes">00</span>
+                <p>Menit</p>
+            </div>
+            <div class="timer-box">
+                <span id="seconds">00</span>
+                <p>Detik</p>
+            </div>
+        </div>
+
+        <!-- Special note & nama kamu -->
+        <div class="special-note">
+            <i class="fas fa-heart"></i>  Aku sayang banget sama kamu!  <i class="fas fa-heart"></i>
+        </div>
+        <div class="signature">
+            ~ dari cowok kamu ~
+        </div>
+
+        <!-- Tombol putar lagu (akan memunculkan audio romantis) -->
+        <button class="btn-play" id="playSongBtn">
+            <i class="fas fa-play-circle"></i> Putar Lagu Spesial <i class="fas fa-music"></i>
+        </button>
+        <div class="footer-romance">
+            <i class="fas fa-envelope-open-text"></i>  selamanya punya kamu  <i class="fas fa-envelope-open-text"></i>
+        </div>
+    </div>
+
+    <!-- Audio tersembunyi dengan lagu Ed Sheeran -->
+    <audio id="romantic-audio" loop preload="auto">
+        <!-- Perfect - Ed Sheeran (Official Audio) - menggunakan YouTube stream sebagai sumber -->
+        <source src="https://www.youtube.com/watch?v=2Vv-BfVoq4g" type="audio/mp4">
+        <!-- Fallback: Thinking Out Loud - Ed Sheeran -->
+        <source src="https://www.youtube.com/watch?v=lp-EO5I60KA" type="audio/mp4">
+        <!-- Fallback: Shape of You - Ed Sheeran -->
+        <source src="https://www.youtube.com/watch?v=JGwWNGJdvx8" type="audio/mp4">
+        <!-- Fallback terakhir: Photograph - Ed Sheeran -->
+        <source src="https://www.youtube.com/watch?v=nSDgHBxUbVQ" type="audio/mp4">
+        Browser kamu tidak mendukung audio.
+    </audio>
+
+
+    <script>
+        (function() {
+            // ===== TIMER MENUJU HARI SPESIAL (contoh: 2 tahun hubungan) =====
+            // Atur tanggal mulai: misal 14 Februari 2023 (ubah sesuai kalian)
+            const startDate = new Date('2026-01-01T00:00:00'); // Ganti sesuai tanggal anniversary
+            function updateTimer() {
+                const now = new Date();
+                const diff = now - startDate; // selisih dalam milidetik
+
+                if (diff < 0) {
+                    document.getElementById('days').innerText = '00';
+                    document.getElementById('hours').innerText = '00';
+                    document.getElementById('minutes').innerText = '00';
+                    document.getElementById('seconds').innerText = '00';
+                    return;
+                }
+
+                const seconds = Math.floor(diff / 1000);
+                const days = Math.floor(seconds / (3600 * 24));
+                const hours = Math.floor((seconds % (3600 * 24)) / 3600);
+                const minutes = Math.floor((seconds % 3600) / 60);
+                const secs = Math.floor(seconds % 60);
+
+                document.getElementById('days').innerText = days.toString().padStart(2, '0');
+                document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').innerText = secs.toString().padStart(2, '0');
+            }
+
+            updateTimer();
+            setInterval(updateTimer, 1000);
+
+            // ===== Nama pacar (bisa diganti sesuai keinginan) =====
+            const namaPacar = prompt("Siapa nama panggilan pacarmu? (kosongkan jika tetap 'Cantikku')", "Sayang");
+            if (namaPacar && namaPacar.trim() !== "") {
+                document.getElementById('pacarName').innerText = namaPacar.trim();
+            }
+
+            // ===== FITUR FOTO: Ganti dengan foto kalian =====
+            // Bisa pakai prompt atau langsung ganti src
+            const fotoURL = prompt("Masukkan URL foto kalian (bisa dari google drive/imgur, kosongkan jika pakai foto kucing lucu)", "");
+            if (fotoURL && fotoURL.trim() !== "") {
+                document.getElementById('ourPhoto').src = fotoURL.trim();
+            } else {
+                // Tetap pakai placeholder yang lebih estetik (gambar couple)
+                document.getElementById('ourPhoto').src = "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=200&h=150&fit=crop&auto=format"; // foto couple
+            }
+
+  // ===== MUSIK ED SHEERAN =====
+            const audio = document.getElementById('romantic-audio');
+            const btn = document.getElementById('playSongBtn');
+            
+            // Daftar lagu Ed Sheeran yang romantis
+            const edSheeranSongs = [
+                { title: "Perfect", url: "https://www.youtube.com/watch?v=2Vv-BfVoq4g" },
+                { title: "Thinking Out Loud", url: "https://www.youtube.com/watch?v=lp-EO5I60KA" },
+                { title: "Photograph", url: "https://www.youtube.com/watch?v=nSDgHBxUbVQ" },
+                { title: "Shape of You", url: "https://www.youtube.com/watch?v=JGwWNGJdvx8" },
+                { title: "Castle on the Hill", url: "https://www.youtube.com/watch?v=K0ibBPhiaG0" }
+            ];
+            
+            let currentSongIndex = 0;
+            let isPlaying = false;
+            let playAttempts = 0;
+
+            // Fungsi untuk mencoba memutar lagu
+            function tryPlaySong() {
+                // Ganti sumber lagu setiap kali mencoba
+                if (playAttempts > 0) {
+                    currentSongIndex = (currentSongIndex + 1) % edSheeranSongs.length;
+                    const song = edSheeranSongs[currentSongIndex];
+                    
+                    // Update sumber audio
+                    audio.src = song.url;
+                    audio.load();
+                    
+                    // Tampilkan pesan lagu yang sedang diputar
+                    console.log(`Mencoba memutar: ${song.title}`);
+                }
+                
+                audio.play().then(() => {
+                    isPlaying = true;
+                    btn.innerHTML = '<i class="fas fa-pause-circle"></i> Jeda Lagu <i class="fas fa-heart"></i>';
+                    playAttempts = 0; // Reset attempts jika berhasil
+                }).catch(err => {
+                    playAttempts++;
+                    console.log(`Gagal memutar percobaan ke-${playAttempts}:`, err);
+                    
+                    if (playAttempts < edSheeranSongs.length * 2) {
+                        // Coba lagi dengan lagu berbeda setelah 1 detik
+                        setTimeout(() => tryPlaySong(), 1000);
+                    } else {
+                        // Jika semua gagal, tampilkan pesan
+                        alert('Maaf, lagu tidak dapat diputar. Tapi cinta kita tetap bersuara! 💕\n\nCoba buka YouTube dan cari "Ed Sheeran Perfect"');
+                        btn.innerHTML = '<i class="fas fa-heart"></i>  Ed Sheeran  <i class="fas fa-heart"></i>';
+                    }
+                });
+            }
+
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (isPlaying) {
+                    audio.pause();
+                    isPlaying = false;
+                    btn.innerHTML = '<i class="fas fa-play-circle"></i> Putar Lagu Ed Sheeran <i class="fas fa-music"></i>';
+                } else {
+                    playAttempts = 0;
+                    tryPlaySong();
+                }
+            });
+
+            audio.addEventListener('play', function() {
+                isPlaying = true;
+                btn.innerHTML = '<i class="fas fa-pause-circle"></i> Jeda Lagu <i class="fas fa-heart"></i>';
+            });
+            
+            audio.addEventListener('pause', function() {
+                isPlaying = false;
+                btn.innerHTML = '<i class="fas fa-play-circle"></i> Putar Lagu Ed Sheeran <i class="fas fa-music"></i>';
+            });
+            
+            audio.addEventListener('ended', function() {
+                isPlaying = false;
+                btn.innerHTML = '<i class="fas fa-play-circle"></i> Putar Lagu Ed Sheeran <i class="fas fa-music"></i>';
+                
+                // Putar lagu berikutnya secara otomatis
+                currentSongIndex = (currentSongIndex + 1) % edSheeranSongs.length;
+                audio.src = edSheeranSongs[currentSongIndex].url;
+                audio.load();
+                audio.play().catch(() => {});
+            });
+
+            audio.onerror = function() {
+                console.warn('Gagal memuat lagu, mencoba lagu lain...');
+                if (isPlaying) {
+                    // Coba ganti lagu
+                    currentSongIndex = (currentSongIndex + 1) % edSheeranSongs.length;
+                    audio.src = edSheeranSongs[currentSongIndex].url;
+                    audio.load();
+                    audio.play().catch(() => {});
+                }
+            };
+
+            // Background love tambahan
+            function addMoreHearts() {
+                const bg = document.getElementById('heart-bg');
+                for (let i = 0; i < 12; i++) {
+                    let heart = document.createElement('i');
+                    heart.className = 'fas fa-heart';
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.animationDuration = (Math.random() * 7 + 5) + 's';
+                    heart.style.animationDelay = (Math.random() * 5) + 's';
+                    heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                    heart.style.color = `rgba(255, ${Math.floor(100 + Math.random() * 80)}, 180, 0.5)`;
+                    bg.appendChild(heart);
+                }
+            }
+            addMoreHearts();
+
+            // Tambahan informasi lagu
+            const songInfo = document.createElement('div');
+            songInfo.style.marginTop = '10px';
+            songInfo.style.fontSize = '0.9rem';
+            songInfo.style.color = '#a0485d';
+            songInfo.innerHTML = '<i class="fas fa-music"></i> Lagu: Perfect - Ed Sheeran <i class="fas fa-music"></i>';
+            document.querySelector('.btn-play').parentNode.insertBefore(songInfo, document.querySelector('.btn-play').nextSibling);
+        })();
+    </script>
+</body>
+</html>
